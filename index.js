@@ -54,7 +54,7 @@ module.exports = opts => {
 
 	function flush(done) {
 		const env = npmRunPath.env({cwd: __dirname});
-		const proc = execa('mocha', files.concat(args), {
+		const proc = execa('nyc', ['--reporter=lcov', '--reporter=text', 'mocha'].concat(files.concat(args)), {
 			env,
 			maxBuffer: HUNDRED_MEGABYTES
 		});
